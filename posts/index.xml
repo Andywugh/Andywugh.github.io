@@ -1,14 +1,22 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>All Posts - My New Hugo Site</title>
-        <link>http://example.org/posts/</link>
-        <description>All Posts | My New Hugo Site</description>
-        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 18 May 2020 00:56:04 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>My First Post</title>
-    <link>http://example.org/posts/my-first-post/</link>
+        <title>All Posts - Andywu hot mind</title>
+        <link>https://www.hotmindshare.com/posts/</link>
+        <description>All Posts | Andywu hot mind</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>andywuwu0728@gmail.com (Andywu)</managingEditor>
+            <webMaster>andywuwu0728@gmail.com (Andywu)</webMaster><lastBuildDate>Mon, 18 May 2020 00:56:04 &#43;0800</lastBuildDate><atom:link href="https://www.hotmindshare.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>使用docker快速部署Jenkins v1.23.x</title>
+    <link>https://www.hotmindshare.com/posts/%E4%BD%BF%E7%94%A8docker%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2jenkins%E6%8C%87%E5%8D%97/</link>
     <pubDate>Mon, 18 May 2020 00:56:04 &#43;0800</pubDate>
     <author>Author</author>
-    <guid>http://example.org/posts/my-first-post/</guid>
-    <description><![CDATA[Hahahaha ]]></description>
+    <guid>https://www.hotmindshare.com/posts/%E4%BD%BF%E7%94%A8docker%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2jenkins%E6%8C%87%E5%8D%97/</guid>
+    <description><![CDATA[牢骚 这几年因为工作忙碌原因，自己写的博客一直断断续续,很是内疚。其实真的一直想将自己工作以来学习的新技术和经验分享给大家，因为在工作中发现有很多朋友一直以来的工作都是做一些重复性的事情，不知不觉就会浪费自己很多时间，导致自己学的的技术一直深入不下去；也有一些朋友一直喜欢活在自己的舒适圈，吃老本，对于新技术的发展不上心，总感觉自己用的技术其实就是“世界上的最棒的技术或语言了”，其实这种心理是很要不得的，这只会给自己在日新月异的技术发展中设了一栋栋高墙，让你渐渐被技术这一行淘汰；很多大厂都说做技术的IT人一定要衷于“拥抱变化”，其实不只是业务需求需要拥抱变化，技术和个人的视野也需要拥抱变化，很多技术自己没有实操过玩过，只听网上的一些对比总结帖就说这个没用，那个用起来太麻烦，那个大而全，这个很多功能都没有&hellip;只有自己真正实操过和钻研过的技术，你才知道它们各自的优缺点和针对的应用场景，没有任何一个技术是真正意义上的银弹，真正的银弹我觉得应该是培养好自己的技术人文化，开阔自己的技术视野，勤于动手尝试新的技术，并加深对技术的原理剖析，这样你才能在技术这条路上走的更好。
+简述 哈哈，扯远了，先回到今天的主题：使用docker快速部署Jenkins，其实写这篇部署Jenkins指南是因为我发现网上很多的Jenkins部署教程都是比较旧，而且所解决的问题都很零散，所以想在这里写一篇对我来说比较全而且快速部署的指南。这次要部署的是Jenkins blue ocean v1.23.2,如果你要部署的版本比这个版本要后的话，就建议参考下本文即可，不过大体上的部署方式应该都是大同小异的。
+ 问题:jenkins的blue ocean是什么版本来的?
+ 其实blue ocean是jenkins官方为了让更多新手更容易去学习使用jenkins而新推出的一个更简易、可读性强、方便使用的jenkins皮肤插件：
+可以看出有blue ocean插件对于使用jenkins的DevOps人员来说可以更快地写出自己想要的ci流水线，其实就是通过界面交互的方式动态生成jenkins能识别的jenkinsfile并下发到jenkins的source control中。
+基于官方文档的初衷，本文使用的blue ocean版本是官方推荐直接用于生产环境的版本，所以我会以官方文档的前提下，优化了一些部署中的过程，让你可以更快更好地搭建整个jenkins。
+预安装环境及组件 支持docker的操作系统 docker-ce v18.06.3+ docker-compose 安装步骤(以linux系统为例)  创建部署文件夹并进入文件夹  mkdir jenkins_deploy &amp;&amp; cd jenkins_deploy  创建hudson.model.UpdateCenter.xml文件,用来给容器预映射到jenkins指定文件中,实现jenkins初始化就能提速插件更新，文件内容如下  &lt;?xml version=&#39;1.1&#39; encoding=&#39;UTF-8&#39;?&gt; &lt;sites&gt; &lt;site&gt; &lt;id&gt;default&lt;/id&gt; &lt;url&gt;https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json&lt;/url&gt; &lt;/site&gt; &lt;/sites&gt;  创建docker-compose.yml文件,并将以下内容复制到docker-compose.yml中   这里还是用了内置docker-dind,这个服务可以直接给jenkins使用docker来部署流水线。这个部署配置文件我是根绝官方的docker部署改写过的,以降低部署难度。
+ version:&#34;3&#34;services:docker:image:docker:19.03.8-dindcontainer_name:jenkins-dockerhostname:dockerprivileged:truerestart:alwaysenvironment:- DOCKER_TLS_CERTDIR=/certsports:- 2376:2376volumes:- TZ=Asia/Shanghai- &#34;jenkins-docker-certs:/certs/client&#34;- &#34;jenkins-data:/var/jenkins_home&#34;networks:jenkins:aliases:- dockerjenkins:image:jenkinsci/blueocean:1.23.2container_name:jenkins-blueoceanrestart:alwaysnetworks:jenkins:environment:- TZ=Asia/Shanghai- DOCKER_HOST=tcp://docker:2376- DOCKER_CERT_PATH=/certs/client- DOCKER_TLS_VERIFY=1- JENKINS_UC_DOWNLOAD=https://mirrors.tuna.tsinghua.edu.cn/jenkins/ports:- 8080:8080- 50000:50000volumes:- &#34;./hudson.model.UpdateCenter.xml:/var/jenkins_home/hudson.model.UpdateCenter.xml&#34;- &#34;jenkins-data:/var/jenkins_home&#34;- &#34;jenkins-docker-certs:/certs/client:ro&#34;depends_on:- dockervolumes:jenkins-docker-certs:jenkins-data:networks:jenkins: 启动容器  docker-compose up -d  先不要访问web界面，先通过命令docker-compose logs -f jenkins查看容器日志，等待jenkins生成初始化的admin密码，如看到类似以下输出时就证明密码生成成功，记录下这个初始密码   密码生成成功后，新建以下脚本文件，原因是新建的jenkins环境用的插件缓存还仍然是国外的下载地址，这样更新插件还是会异常缓慢，所以需要这个脚本来批量修改这些地址转换为国内的更新地址  # modify_jenkins_urls.]]></description>
 </item></channel>
 </rss>
