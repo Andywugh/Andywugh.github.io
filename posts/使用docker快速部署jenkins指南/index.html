@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>使用docker快速部署Jenkins v1.23.x - Andywu hot mind</title><meta name="Description" content=""><meta property="og:title" content="使用docker快速部署Jenkins v1.23.x" />
+        <title>使用docker快速部署Jenkins v1.23.x - Hot mind share.</title><meta name="Description" content=""><meta property="og:title" content="使用docker快速部署Jenkins v1.23.x" />
 <meta property="og:description" content="牢骚 这几年因为工作忙碌原因，自己写的博客一直断断续续,很是内疚。其实真的一直想将自己工作以来学习的新技术和经验分享给大家，因为在工作中发现有很多朋友一直以来的工作都是做一些重复性的事情，不知不觉就会浪费自己很多时间，导致自己学的的技术一直深入不下去；也有一些朋友一直喜欢活在自己的舒适圈，吃老本，对于新技术的发展不上心，总感觉自己用的技术其实就是“世界上的最棒的技术或语言了”，其实这种心理是很要不得的，这只会给自己在日新月异的技术发展中设了一栋栋高墙，让你渐渐被技术这一行淘汰；很多大厂都说做技术的IT人一定要衷于“拥抱变化”，其实不只是业务需求需要拥抱变化，技术和个人的视野也需要拥抱变化，很多技术自己没有实操过玩过，只听网上的一些对比总结帖就说这个没用，那个用起来太麻烦，那个大而全，这个很多功能都没有&hellip;只有自己真正实操过和钻研过的技术，你才知道它们各自的优缺点和针对的应用场景，没有任何一个技术是真正意义上的银弹，真正的银弹我觉得应该是培养好自己的技术人文化，开阔自己的技术视野，勤于动手尝试新的技术，并加深对技术的原理剖析，这样你才能在技术这条路上走的更好。
 简述 哈哈，扯远了，先回到今天的主题：使用docker快速部署Jenkins，其实写这篇部署Jenkins指南是因为我发现网上很多的Jenkins部署教程都是比较旧，而且所解决的问题都很零散，所以想在这里写一篇对我来说比较全而且快速部署的指南。这次要部署的是Jenkins blue ocean v1.23.2,如果你要部署的版本比这个版本要后的话，就建议参考下本文即可，不过大体上的部署方式应该都是大同小异的。
  问题:jenkins的blue ocean是什么版本来的?
@@ -45,13 +45,13 @@
             "@id": "https:\/\/www.hotmindshare.com\/posts\/%E4%BD%BF%E7%94%A8docker%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2jenkins%E6%8C%87%E5%8D%97\/"
         },"image": {
                 "@type": "ImageObject",
-                "url": "https:\/\/www.hotmindshare.com\/cover.png",
+                "url": "https:\/\/www.hotmindshare.com\/background.jpg",
                 "width":  800 ,
                 "height":  600 
-            },"genre": "posts","wordcount":  109 ,
+            },"genre": "posts","keywords": "Jenkins","wordcount":  109 ,
         "url": "https:\/\/www.hotmindshare.com\/posts\/%E4%BD%BF%E7%94%A8docker%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2jenkins%E6%8C%87%E5%8D%97\/","datePublished": "2020-05-18T00:56:04+08:00","dateModified": "2020-05-18T00:56:04+08:00","publisher": {
                 "@type": "Organization",
-                "name": "xxxx",
+                "name": "Andywu",
                 "logo": {
                 "@type": "ImageObject",
                 "url": "https:\/\/www.hotmindshare.com\/logo.png",
@@ -69,14 +69,14 @@
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
-            <a href="/" title="Andywu hot mind"><img
+            <a href="/" title="Hot mind share."><img
         class="lazyload logo"
         src="/svg/loading/small.min.svg"
         data-src="/android-chrome-512x512.png"
         data-srcset="/android-chrome-512x512.png, /android-chrome-512x512.png 1.5x, /android-chrome-512x512.png 2x"
         data-sizes="auto"
-        alt="Andywu hot mind"
-        title="Andywu hot mind" /><span id="id-1" class="typeit"></span></a>
+        alt="Hot mind share."
+        title="Hot mind share." /><span id="id-1" class="typeit"></span></a>
         </div>
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
@@ -100,14 +100,14 @@
     <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/" title="Andywu hot mind"><img
+                <a href="/" title="Hot mind share."><img
         class="lazyload logo"
         src="/svg/loading/small.min.svg"
         data-src="/android-chrome-512x512.png"
         data-srcset="/android-chrome-512x512.png, /android-chrome-512x512.png 1.5x, /android-chrome-512x512.png 2x"
         data-sizes="auto"
-        alt="Andywu hot mind"
-        title="Andywu hot mind" /><span id="id-2" class="typeit"></span></a>
+        alt="Hot mind share."
+        title="Hot mind share." /><span id="id-2" class="typeit"></span></a>
             </div>
             <div class="menu-toggle" id="menu-toggle-mobile">
                 <span></span><span></span><span></span>
@@ -145,11 +145,21 @@
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">使用docker快速部署Jenkins v1.23.x</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Andywu</a></span></div>
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Andywu</a></span>&nbsp;
+                    <span class="post-category">included in<a href="/categories/devops/">
+                                <i class="far fa-folder fa-fw"></i>DevOps
+                            </a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2020-05-18>2020-05-18</time>&nbsp;
                 <i class="fas fa-pencil-alt fa-fw"></i>&nbsp;about 109 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;1 min&nbsp;</div>
-        </div><div class="details toc" id="toc-static">
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading/normal.min.svg"
+        data-src="/blogs/jenkins_deploy/banner.jpg"
+        data-srcset="/blogs/jenkins_deploy/banner.jpg, /blogs/jenkins_deploy/banner.jpg 1.5x, /blogs/jenkins_deploy/banner.jpg 2x"
+        data-sizes="auto"
+        alt="/blogs/jenkins_deploy/banner.jpg"
+        title="/blogs/jenkins_deploy/banner.jpg" /></div><div class="details toc" id="toc-static">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
@@ -178,16 +188,16 @@
 <p><img
         class="lazyload"
         src="/svg/loading/small.min.svg"
-        data-src="/jenkins_deploy/pipeline-dashboard.png"
-        data-srcset="/jenkins_deploy/pipeline-dashboard.png, /jenkins_deploy/pipeline-dashboard.png 1.5x, /jenkins_deploy/pipeline-dashboard.png 2x"
+        data-src="/blogs/jenkins_deploy/pipeline-dashboard.png"
+        data-srcset="/blogs/jenkins_deploy/pipeline-dashboard.png, /blogs/jenkins_deploy/pipeline-dashboard.png 1.5x, /blogs/jenkins_deploy/pipeline-dashboard.png 2x"
         data-sizes="auto"
         alt="dashboard"
         title="dashboard" />
 <img
         class="lazyload"
         src="/svg/loading/small.min.svg"
-        data-src="/jenkins_deploy/pipeline-run.png"
-        data-srcset="/jenkins_deploy/pipeline-run.png, /jenkins_deploy/pipeline-run.png 1.5x, /jenkins_deploy/pipeline-run.png 2x"
+        data-src="/blogs/jenkins_deploy/pipeline-run.png"
+        data-srcset="/blogs/jenkins_deploy/pipeline-run.png, /blogs/jenkins_deploy/pipeline-run.png 1.5x, /blogs/jenkins_deploy/pipeline-run.png 2x"
         data-sizes="auto"
         alt="run"
         title="run" /></p>
@@ -230,21 +240,21 @@ docker-compose
 </span><span class="w">    </span><span class="k">restart</span><span class="p">:</span><span class="w"> </span>always<span class="w">
 </span><span class="w">    </span><span class="k">environment</span><span class="p">:</span><span class="w">
 </span><span class="w">      </span>- DOCKER_TLS_CERTDIR=/certs<span class="w">
-</span><span class="w">    </span><span class="k">ports</span><span class="p">:</span><span class="w"> 
+</span><span class="w">    </span><span class="k">ports</span><span class="p">:</span><span class="w">
 </span><span class="w">      </span>- <span class="m">2376</span><span class="p">:</span><span class="m">2376</span><span class="w">
-</span><span class="w">    </span><span class="k">volumes</span><span class="p">:</span><span class="w"> 
+</span><span class="w">    </span><span class="k">volumes</span><span class="p">:</span><span class="w">
 </span><span class="w">      </span>- TZ=Asia/Shanghai<span class="w">
 </span><span class="w">      </span>- <span class="s2">&#34;jenkins-docker-certs:/certs/client&#34;</span><span class="w">
 </span><span class="w">      </span>- <span class="s2">&#34;jenkins-data:/var/jenkins_home&#34;</span><span class="w">
-</span><span class="w">    </span><span class="k">networks</span><span class="p">:</span><span class="w"> 
+</span><span class="w">    </span><span class="k">networks</span><span class="p">:</span><span class="w">
 </span><span class="w">      </span><span class="k">jenkins</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="k">aliases</span><span class="p">:</span><span class="w"> 
+</span><span class="w">        </span><span class="k">aliases</span><span class="p">:</span><span class="w">
 </span><span class="w">          </span>- docker<span class="w">
 </span><span class="w">  </span><span class="k">jenkins</span><span class="p">:</span><span class="w">
 </span><span class="w">    </span><span class="k">image</span><span class="p">:</span><span class="w"> </span>jenkinsci/blueocean<span class="p">:</span><span class="m">1.23.2</span><span class="w">
 </span><span class="w">    </span><span class="k">container_name</span><span class="p">:</span><span class="w"> </span>jenkins-blueocean<span class="w">
 </span><span class="w">    </span><span class="k">restart</span><span class="p">:</span><span class="w"> </span>always<span class="w">
-</span><span class="w">    </span><span class="k">networks</span><span class="p">:</span><span class="w"> 
+</span><span class="w">    </span><span class="k">networks</span><span class="p">:</span><span class="w">
 </span><span class="w">      </span><span class="k">jenkins</span><span class="p">:</span><span class="w">
 </span><span class="w">    </span><span class="k">environment</span><span class="p">:</span><span class="w">
 </span><span class="w">      </span>- TZ=Asia/Shanghai<span class="w">
@@ -252,21 +262,21 @@ docker-compose
 </span><span class="w">      </span>- DOCKER_CERT_PATH=/certs/client<span class="w">
 </span><span class="w">      </span>- DOCKER_TLS_VERIFY=<span class="m">1</span><span class="w">
 </span><span class="w">      </span>- JENKINS_UC_DOWNLOAD=https<span class="p">:</span>//mirrors.tuna.tsinghua.edu.cn/jenkins/<span class="w">
-</span><span class="w">    </span><span class="k">ports</span><span class="p">:</span><span class="w"> 
+</span><span class="w">    </span><span class="k">ports</span><span class="p">:</span><span class="w">
 </span><span class="w">      </span>- <span class="m">8080</span><span class="p">:</span><span class="m">8080</span><span class="w">
 </span><span class="w">      </span>- <span class="m">50000</span><span class="p">:</span><span class="m">50000</span><span class="w">
-</span><span class="w">    </span><span class="k">volumes</span><span class="p">:</span><span class="w"> 
+</span><span class="w">    </span><span class="k">volumes</span><span class="p">:</span><span class="w">
 </span><span class="w">      </span>- <span class="s2">&#34;./hudson.model.UpdateCenter.xml:/var/jenkins_home/hudson.model.UpdateCenter.xml&#34;</span><span class="w">
 </span><span class="w">      </span>- <span class="s2">&#34;jenkins-data:/var/jenkins_home&#34;</span><span class="w">
 </span><span class="w">      </span>- <span class="s2">&#34;jenkins-docker-certs:/certs/client:ro&#34;</span><span class="w">
-</span><span class="w">    </span><span class="k">depends_on</span><span class="p">:</span><span class="w"> 
+</span><span class="w">    </span><span class="k">depends_on</span><span class="p">:</span><span class="w">
 </span><span class="w">      </span>- docker<span class="w">
 </span><span class="w">
-</span><span class="w"></span><span class="k">volumes</span><span class="p">:</span><span class="w"> 
+</span><span class="w"></span><span class="k">volumes</span><span class="p">:</span><span class="w">
 </span><span class="w">  </span><span class="k">jenkins-docker-certs</span><span class="p">:</span><span class="w">
 </span><span class="w">  </span><span class="k">jenkins-data</span><span class="p">:</span><span class="w">
 </span><span class="w">
-</span><span class="w"></span><span class="k">networks</span><span class="p">:</span><span class="w"> 
+</span><span class="w"></span><span class="k">networks</span><span class="p">:</span><span class="w">
 </span><span class="w">  </span><span class="k">jenkins</span><span class="p">:</span><span class="w">
 </span></code></pre></div><ul>
 <li>启动容器</li>
@@ -278,8 +288,8 @@ docker-compose
 <p><img
         class="lazyload"
         src="/svg/loading/small.min.svg"
-        data-src="/jenkins_deploy/passwd.png"
-        data-srcset="/jenkins_deploy/passwd.png, /jenkins_deploy/passwd.png 1.5x, /jenkins_deploy/passwd.png 2x"
+        data-src="/blogs/jenkins_deploy/passwd.png"
+        data-srcset="/blogs/jenkins_deploy/passwd.png, /blogs/jenkins_deploy/passwd.png 1.5x, /blogs/jenkins_deploy/passwd.png 2x"
         data-sizes="auto"
         alt="passwd"
         title="passwd" /></p>
@@ -319,13 +329,13 @@ bash ./modify_jenins_urls.sh
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://www.hotmindshare.com/posts/%E4%BD%BF%E7%94%A8docker%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2jenkins%E6%8C%87%E5%8D%97/" data-title="使用docker快速部署Jenkins v1.23.x"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://www.hotmindshare.com/posts/%E4%BD%BF%E7%94%A8docker%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2jenkins%E6%8C%87%E5%8D%97/"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://www.hotmindshare.com/posts/%E4%BD%BF%E7%94%A8docker%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2jenkins%E6%8C%87%E5%8D%97/" data-title="使用docker快速部署Jenkins v1.23.x" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://www.hotmindshare.com/posts/%E4%BD%BF%E7%94%A8docker%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2jenkins%E6%8C%87%E5%8D%97/" data-title="使用docker快速部署Jenkins v1.23.x"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://www.hotmindshare.com/posts/%E4%BD%BF%E7%94%A8docker%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2jenkins%E6%8C%87%E5%8D%97/" data-title="使用docker快速部署Jenkins v1.23.x"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="https://www.hotmindshare.com/posts/%E4%BD%BF%E7%94%A8docker%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2jenkins%E6%8C%87%E5%8D%97/" data-title="使用docker快速部署Jenkins v1.23.x" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://www.hotmindshare.com/posts/%E4%BD%BF%E7%94%A8docker%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2jenkins%E6%8C%87%E5%8D%97/" data-title="使用docker快速部署Jenkins v1.23.x" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="https://www.hotmindshare.com/posts/%E4%BD%BF%E7%94%A8docker%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2jenkins%E6%8C%87%E5%8D%97/" data-title="使用docker快速部署Jenkins v1.23.x"><i class="fab fa-evernote fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://www.hotmindshare.com/posts/%E4%BD%BF%E7%94%A8docker%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2jenkins%E6%8C%87%E5%8D%97/" data-title="使用docker快速部署Jenkins v1.23.x" data-hashtags="Jenkins"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://www.hotmindshare.com/posts/%E4%BD%BF%E7%94%A8docker%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2jenkins%E6%8C%87%E5%8D%97/" data-hashtag="Jenkins"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://www.hotmindshare.com/posts/%E4%BD%BF%E7%94%A8docker%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2jenkins%E6%8C%87%E5%8D%97/" data-title="使用docker快速部署Jenkins v1.23.x" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://www.hotmindshare.com/posts/%E4%BD%BF%E7%94%A8docker%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2jenkins%E6%8C%87%E5%8D%97/" data-title="使用docker快速部署Jenkins v1.23.x"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://www.hotmindshare.com/posts/%E4%BD%BF%E7%94%A8docker%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2jenkins%E6%8C%87%E5%8D%97/" data-title="使用docker快速部署Jenkins v1.23.x" data-image="/blogs/jenkins_deploy/banner.jpg"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="https://www.hotmindshare.com/posts/%E4%BD%BF%E7%94%A8docker%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2jenkins%E6%8C%87%E5%8D%97/" data-title="使用docker快速部署Jenkins v1.23.x" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://www.hotmindshare.com/posts/%E4%BD%BF%E7%94%A8docker%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2jenkins%E6%8C%87%E5%8D%97/" data-title="使用docker快速部署Jenkins v1.23.x" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="https://www.hotmindshare.com/posts/%E4%BD%BF%E7%94%A8docker%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2jenkins%E6%8C%87%E5%8D%97/" data-title="使用docker快速部署Jenkins v1.23.x"><i class="fab fa-evernote fa-fw"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/jenkins/">Jenkins</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
@@ -344,5 +354,5 @@ bash ./modify_jenins_urls.sh
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw"></i>
             </a>
-        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"id-1":"Hot mind share.","id-2":"Hot mind share."},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"},"typeit":{"cursorChar":null,"cursorSpeed":null,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":null,"speed":null}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><style>.lg-toolbar .lg-icon::after { color: #999; }</style><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"id-1":"Hot mind share.","id-2":"Hot mind share."},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"},"typeit":{"cursorChar":null,"cursorSpeed":null,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":null,"speed":null}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

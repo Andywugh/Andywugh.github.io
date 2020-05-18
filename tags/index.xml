@@ -1,8 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Tags - Tag - Andywu hot mind</title>
+        <title>Tags - Tag - Hot mind share.</title>
         <link>https://www.hotmindshare.com/tags/</link>
-        <description>Tags - Tag - Andywu hot mind</description>
+        <description>Tags - Tag - Hot mind share.</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>andywuwu0728@gmail.com (Andywu)</managingEditor>
-            <webMaster>andywuwu0728@gmail.com (Andywu)</webMaster><atom:link href="https://www.hotmindshare.com/tags/" rel="self" type="application/rss+xml" /></channel>
+            <webMaster>andywuwu0728@gmail.com (Andywu)</webMaster><lastBuildDate>Mon, 18 May 2020 00:56:04 &#43;0800</lastBuildDate><atom:link href="https://www.hotmindshare.com/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>Jenkins</title>
+    <link>https://www.hotmindshare.com/tags/jenkins/</link>
+    <pubDate>Mon, 18 May 2020 00:56:04 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://www.hotmindshare.com/tags/jenkins/</guid>
+    <description><![CDATA[]]></description>
+</item></channel>
 </rss>
